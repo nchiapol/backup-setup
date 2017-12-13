@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# backup_home.sh -- run daily backup of home
+#
+# Copyright 2017, Nicola Chiapolini
+#
+# License: GNU General Public License version 3,
+#          or (at your option) any later version.
+
 cd /dev/disk/by-label/ || exit
 for label in *
 do
