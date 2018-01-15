@@ -15,11 +15,11 @@ Borg Cheat-Sheet
 
   - check consistency of archive
       ```
-      borg check <repo path>::<archive>
+      borg check -v --progress <repo path>::<archive>
       ```
     and full repo
       ```
-      borg check <repo path>
+      borg check -v --progress <repo path>
       ```
 
   - exercise restore
@@ -56,5 +56,5 @@ Borg Cheat-Sheet
       ```
     run:
       ```
-      borg prune -d 10 -w 52 <repo-path>
+      borg prune --progress -d 10 -w 52 <repo-path>
       ```
