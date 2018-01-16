@@ -15,7 +15,7 @@ Initial Setup (as root)
 -----------------------
 (The scripts are tested with Debian "Buster" and borg 1.1.4)
   * checkout this repo to `/root/backup`
-  * Adjust all pathes (replace all occurences of `nchiapol`)
+  * Adjust all paths (replace all occurences of `nchiapol`)
   * store the passphrase you want to use for your encryption-keys in the file `/root/backup/borg-passphrase`  
     (Make sure its only readable by root `chmod 400 /root/backup/borg-passphrase`)
   * plug-in backup disk and run `setup.sh`
