@@ -8,9 +8,9 @@ Borg Cheat-Sheet
   - verify last generation
       ```
       mkdir ~/tmp/verify
-      cd ~/tmp/verfiy
+      cd ~/tmp/verify
       borg list <last archive> | shuf -n 100 | grep -o "home/.*" | xargs borg extract <last archive>
-      diff -rs home/nchiapol/ ~/ | grep -e 'identical$' | wc -l
+      diff -rs ~/tmp/verify/home/nchiapol/ ~/ | grep -e 'identical$' | wc -l
       ```
 
   - check consistency of archive
