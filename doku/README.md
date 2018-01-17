@@ -18,10 +18,17 @@ Policy
 
 Troubleshooting
 ---------------
+When Running the Script without normal user rights, I run into the problem below. Everything seems to work fine when run as root.
 
-  Error creating textual authentication agent: Error opening current controlling terminal for the process (`/dev/tty'): No such device or address (polkit-error-quark, 0)
-  Error mounting /dev/sdc1: GDBus.Error:org.freedesktop.UDisks2.Error.NotAuthorizedCanObtain: Not authorized to perform operation
+```bash
+Error creating textual authentication agent: Error opening current controlling terminal for the process (`/dev/tty'): No such device or address (polkit-error-quark, 0)
+Error mounting /dev/sdc1: GDBus.Error:org.freedesktop.UDisks2.Error.NotAuthorizedCanObtain: Not authorized to perform operation
+```
 
 This seems to be caused by missing rights for polkit. To investigate compare the output of
-  for act in $(pkaction); do echo "  - $act" ; pkcheck --action-id $act --process $$; done
-when run from the terminal and from a cron job
+```bash
+for act in $(pkaction); do echo "  - $act" ; pkcheck --action-id $act --process $$; done
+```
+when run from the terminal and from a cron job.
+
+See doku/helpers/10-udisks.pkla
