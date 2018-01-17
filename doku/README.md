@@ -18,6 +18,8 @@ Policy
 
 Troubleshooting
 ---------------
+When Running the Script without normal user rights, I run into the problem below. Everything seems to work fine when run as root.
+
 ```bash
 Error creating textual authentication agent: Error opening current controlling terminal for the process (`/dev/tty'): No such device or address (polkit-error-quark, 0)
 Error mounting /dev/sdc1: GDBus.Error:org.freedesktop.UDisks2.Error.NotAuthorizedCanObtain: Not authorized to perform operation
@@ -29,4 +31,4 @@ for act in $(pkaction); do echo "  - $act" ; pkcheck --action-id $act --process 
 ```
 when run from the terminal and from a cron job.
 
-Solved - See doku/helpers/10-udisks.pkla
+See doku/helpers/10-udisks.pkla
