@@ -25,3 +25,5 @@ Troubleshooting
 This seems to be caused by missing rights for polkit. To investigate compare the output of
   for act in $(pkaction); do echo "  - $act" ; pkcheck --action-id $act --process $$; done
 when run from the terminal and from a cron job
+
+Solved - See doku/helpers/10-udisks.pkla
