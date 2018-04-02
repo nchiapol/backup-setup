@@ -31,12 +31,14 @@ do
             --exclude-caches \
             --one-file-system \
             --compression lz4
+        echo "unmounting archiv disk"
         udisksctl unmount -b /dev/disk/by-label/archiv
+        echo "pruning"
         borg prune -m 12  "/media/root/$label/nchiapol-borg" --prefix "archiv_"
-        borg prune -d 30 -m 52 "/media/root/$label/nchiapol-borg" --prefix "home_"
+        borg prune -d 30 -w 52 "/media/root/$label/nchiapol-borg" --prefix "home_"
         #echo "running fsck"
         #borg check "/media/root/$label/nchiapol-borg"
-        echo "unmounting"
+        echo "unmounting backup disk"
         udisksctl unmount -b "/dev/disk/by-label/$label"
         break
     fi
