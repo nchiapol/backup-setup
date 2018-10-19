@@ -1,5 +1,10 @@
 Borg Cheat-Sheet
 ----------------
+  - print overview info
+      ```
+      borg info <repo path>
+      ```
+
   - list available generations (archives)
       ```
       borg list <repo path>
