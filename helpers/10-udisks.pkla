@@ -1,0 +1,13 @@
+# to allow udisksctl to work from cron for normal users, polkit needs additional rights
+# if polkit is missing these rights, errors like the following might show up:
+#   Error creating textual authentication agent: Error opening current controlling terminal [...] (polkit-error-quark, 0)
+#   Error mounting [...]: GDBus.Error:org.freedesktop.UDisks2.Error.NotAuthorizedCanObtain: Not authorized to perform operation
+#
+# To solve these errors, put this file into
+#   /etc/polkit-1/localauthority/50-local.d
+# and dont forget to adjust the username
+[udisks2]
+Identity=unix-user:nchiapol
+Action=org.freedesktop.udisks2.filesystem-mount-other-seat;org.freedesktop.udisks2.filesystem-mount
+ResultAny=yes
+

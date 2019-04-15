@@ -26,6 +26,8 @@ Initial Setup (as root)
     ```
     15 21 * * * /root/backup/scripts/backup_home.sh
     ```
+  * copy file `helpers/10-udisks.pkla` to `/etc/polkit-1/localauthority/50-local.d`
+    and adjust `Indentity` to match the user used when mounting in the backup scripts
 
 KMail Backups
 -------------
