@@ -14,7 +14,7 @@ Borg Cheat-Sheet
       ```
       mkdir ~/tmp/verify
       cd ~/tmp/verify
-      borg list <last archive> | shuf -n 100 | grep -o "home/.*" | xargs borg extract <last archive>
+      borg list <last archive> --format {mode}+{path}{NL} | grep -v '^d' | grep -o "home/.*" | shuf -n 100 | xargs -d '\n' borg extract <last archive>
       diff -rs ~/tmp/verify/home/nchiapol/ ~/ | grep -e 'identical$' | wc -l
       ```
 
