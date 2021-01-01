@@ -25,6 +25,7 @@ do
         if [ "$was_mounted" != "true" ]
         then
             udisksctl unmount -b "/dev/disk/by-label/$label"
+            hdparm -y "/dev/disk/by-label/$label"
         fi
         break
     fi
