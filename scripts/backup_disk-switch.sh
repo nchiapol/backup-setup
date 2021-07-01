@@ -2,7 +2,7 @@
 
 # backup_disk-switch.sh -- perpare switching of backup disks
 #
-# Copyright 2017-2019 Nicola Chiapolini
+# Copyright 2017-2021 Nicola Chiapolini
 #
 # License: GNU General Public License version 3,
 #          or (at your option) any later version.
@@ -11,7 +11,7 @@ for label in /dev/disk/by-label/*
 do
     diskname=$(basename "$label")
     echo "$diskname"
-    if [ "${diskname:0:6}" == "backup" ] 
+    if [ "${diskname:0:6}" == "backup" ]
     then
         export BORG_RELOCATED_REPO_ACCESS_IS_OK='yes'
         export BORG_KEY_FILE="/root/backup/keys/$diskname"
@@ -23,13 +23,18 @@ do
             --exclude-caches \
             --one-file-system \
             --compression lz4
-	echo "updating archives"
-	sudo -u nchiapol ../helpers/annex_update.sh
-	echo "pruning"
-        borg prune -m 12  "/media/nchiapol/$diskname/nchiapol-borg" --prefix "system_"
-        borg prune -d 30 -w 52 "/media/nchiapol/$diskname/nchiapol-borg" --prefix "home_"
-        #echo "running fsck"
-        #borg check "/media/root/$diskname/nchiapol-borg"
+        echo "updating archives"
+        sudo -u nchiapol ../helpers/annex_update.sh
+        if [ "${1}" == "-p" ]
+        then
+            echo "pruning"
+            borg prune -m 12  "/media/nchiapol/$diskname/nchiapol-borg" --prefix "system_"
+            borg prune -d 30 -w 52 "/media/nchiapol/$diskname/nchiapol-borg" --prefix "home_"
+            #echo "running fsck"
+            #borg check "/media/root/$diskname/nchiapol-borg"
+        else
+            echo "-p missing, not pruning"
+        fi
         echo "unmounting backup disk"
         udisksctl unmount -b "/dev/disk/by-label/$diskname"
         break
