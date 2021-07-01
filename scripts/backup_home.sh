@@ -2,7 +2,7 @@
 
 # backup_home.sh -- run daily backup of home
 #
-# Copyright 2017-2019, Nicola Chiapolini
+# Copyright 2017-2021, Nicola Chiapolini
 #
 # License: GNU General Public License version 3,
 #          or (at your option) any later version.
@@ -25,7 +25,7 @@ do
         if [ "$was_mounted" != "true" ]
         then
             udisksctl unmount -b "/dev/disk/by-label/$label"
-            hdparm -y "/dev/disk/by-label/$label"
+            /usr/sbin/hdparm -y "/dev/disk/by-label/$label"
         fi
         break
     fi
