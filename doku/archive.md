@@ -56,6 +56,14 @@ function archive_dir {
 
 Commands
 --------
+  * add new file to annex
+```
+# create archive files (see above)
+# move archive files into annex directory
+git annex add <file>
+git commit -m "..."
+```
+
   * update backup disk
 ```
 git annex sync --content
