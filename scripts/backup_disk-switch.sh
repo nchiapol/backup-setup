@@ -2,7 +2,7 @@
 
 # backup_disk-switch.sh -- perpare switching of backup disks
 #
-# Copyright 2017-2021 Nicola Chiapolini
+# Copyright 2017-2022 Nicola Chiapolini
 #
 # License: GNU General Public License version 3,
 #          or (at your option) any later version.
@@ -29,7 +29,7 @@ do
         then
             echo "pruning"
             borg prune -m 12  "/media/nchiapol/$diskname/nchiapol-borg" --prefix "system_"
-            borg prune -d 30 -w 52 "/media/nchiapol/$diskname/nchiapol-borg" --prefix "home_"
+            borg prune -d 30 -w 52 -m 24 -y 10 "/media/nchiapol/$diskname/nchiapol-borg" --prefix "home_"
             #echo "running fsck"
             #borg check "/media/root/$diskname/nchiapol-borg"
         else
