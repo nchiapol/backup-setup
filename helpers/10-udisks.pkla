@@ -1,3 +1,5 @@
+# NOTE: this file is needed for older versions of polkit in Debian (before policykit-1 (121+compat0.1-2) // bookworm)
+#       from version 121+compat0.1-2 on, use the .rules version
 # to allow udisksctl to work from cron for normal users, polkit needs additional rights
 # if polkit is missing these rights, errors like the following might show up:
 #   Error creating textual authentication agent: Error opening current controlling terminal [...] (polkit-error-quark, 0)
