@@ -21,11 +21,13 @@ do
             --exclude-from /root/backup/exclude/borg-home_exclude.conf \
             --exclude-caches \
             --one-file-system \
-            --compression lz4
+            --compression lz4 || true
         if [ "$was_mounted" != "true" ]
         then
             udisksctl unmount -b "/dev/disk/by-label/$label"
             /usr/sbin/hdparm -y "/dev/disk/by-label/$label"
+	else
+	    echo "not unmounting, disk was mounted already"
         fi
         break
     fi
