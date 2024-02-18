@@ -11,7 +11,7 @@ VERIFY_DIR=$(mktemp -d)
 cd "$VERIFY_DIR" || exit
 echo "extracting files from backup (this will take some time)"
 borg list --format "{type} {path}{NL}" "$1" | grep -e "^-" | shuf -n 100 | grep -o "home/.*" | xargs -d '\n' borg extract "$1"
-IDENTICAL=$(diff -rs "$VERIFY_DIR/home/nchiapol/" ~/ | grep -ce 'identical$')
+IDENTICAL=$(diff -rs "$VERIFY_DIR/home/nchiapol/" ~nchiapol/ | grep -ce 'identical$')
 
 if [ "$IDENTICAL" -eq 100 ]
 then
