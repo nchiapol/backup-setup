@@ -6,6 +6,11 @@ then
     echo "    random_check.sh <repo-path>::<archive-id>"
     exit 1
 fi
+if [[ "$1" != /* ]]
+then
+    echo "ERROR: <repo-path> must be an absolute path"
+    exit 1
+fi
 
 VERIFY_DIR=$(mktemp -d)
 cd "$VERIFY_DIR" || exit
