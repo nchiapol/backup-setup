@@ -27,4 +27,6 @@ then
 else
     echo -e "\nFAILURE: $IDENTICAL/100 files are identical\n"
     echo "temporary directory not removed: $VERIFY_DIR"
+    echo "you probably want to look at"
+    echo "   diff -rs \"$VERIFY_DIR/home/nchiapol/\" ~nchiapol/ | grep 'Only in /tmp'"
 fi
