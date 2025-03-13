@@ -1,0 +1,10 @@
+# trigger backup, when disk is connected
+#
+# Setup:
+# - put this file in /etc/udev/rules.d/
+# - make sure `run-backup.service` is installed as well
+#
+# to find the correct key-value pairs for other disks, use `udevadm info -a -n /dev/sdX`
+
+# we do not need `TAG+="systemd"` as this is the default for all block devices (see `man systemd.device`)
+ACTION=="add", SUBSYSTEM=="block", SUBSYSTEMS=="usb", ATTR{partition}=="1", ATTRS{manufacturer}=="Western Digital", ENV{SYSTEMD_WANTS}+="run-backup.service"

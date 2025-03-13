@@ -22,12 +22,17 @@ Initial Setup (as root)
     (Make sure its only readable by root `chmod 400 /root/backup/borg-passphrase`)
   * plug-in backup disk and run `setup.sh`
   * plug-in second disk and run `setup.sh`
-  * add a cronjob for root `crontab -e`
-    ```
-    15 21 * * * /root/backup/scripts/backup_home.sh
-    ```
-  * copy file `helpers/10-udisks.pkla` to `/etc/polkit-1/localauthority/50-local.d`
-    and adjust `Indentity` to match the user used when mounting in the backup scripts
+  * setup trigger for `backup_home.sh`
+    a. trigger script when disks are plugged in:
+       - install `helpers/90-run-backups.rules`
+       - install `helpers/run-backups.service`
+       (according to comments in these files)
+    b. add a cronjob for root `crontab -e`
+       ```
+       15 21 * * * /root/backup/scripts/backup_home.sh
+       ```
+  * copy file `helpers/10-udisks.rules` to `/etc/polkit-1/rules.d`
+    and adjust `subject.user` to match the user used when mounting in the backup scripts
 
 KMail Backups
 -------------

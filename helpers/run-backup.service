@@ -1,0 +1,13 @@
+# execute the backup script and mail relevant log
+#
+# Setup:
+# - put this file in /etc/systemd/system/
+# - make sure `90-run-backup.rules` is installed as well
+
+[Unit]
+Description=Run borg backup
+
+[Service]
+Type=oneshot
+ExecStart=/root/backup/scripts/backup_home.sh
+ExecStartPost=/root/backup/helpers/mail-log.sh

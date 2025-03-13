@@ -4,7 +4,7 @@
 //   Error mounting [...]: GDBus.Error:org.freedesktop.UDisks2.Error.NotAuthorizedCanObtain: Not authorized to perform operation
 //
 // To solve these errors, put this file into
-//   /etc/polkit-1/rules/
+//   /etc/polkit-1/rules.d/
 // and dont forget to adjust the username
 
 polkit.addRule(function(action, subject) {
