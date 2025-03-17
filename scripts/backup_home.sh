@@ -26,8 +26,8 @@ do
         then
             udisksctl unmount -b "/dev/disk/by-label/$label"
             /usr/sbin/hdparm -y "/dev/disk/by-label/$label"
-	else
-	    echo "not unmounting, disk was mounted already"
+        else
+            echo "not unmounting, disk was mounted already"
         fi
         break
     fi
