@@ -28,8 +28,8 @@ do
         if [ "${1}" == "-p" ]
         then
             echo "pruning"
-            borg prune -m 12  "/media/nchiapol/$diskname/nchiapol-borg" --prefix "system_"
-            borg prune -d 30 -w 52 -m 24 -y 10 "/media/nchiapol/$diskname/nchiapol-borg" --prefix "home_"
+            borg prune -m 12 "/media/nchiapol/$diskname/nchiapol-borg" --glob-archives "system_*" --stats
+            borg prune -d 30 -w 52 -m 24 -y 10 "/media/nchiapol/$diskname/nchiapol-borg" --glob-archives "home_*" --stats --progress
             #echo "running fsck"
             #borg check "/media/root/$diskname/nchiapol-borg"
         else
