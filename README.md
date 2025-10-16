@@ -24,8 +24,8 @@ Initial Setup (as root)
   * plug-in second disk and run `setup.sh`
   * setup trigger for `backup_home.sh`
     a. trigger script when disks are plugged in:
-       - install `helpers/90-run-backups.rules`
-       - install `helpers/run-backups.service`
+       - install `helpers/90-run-backup.rules`
+       - install `helpers/run-backup.service`
        (according to comments in these files)
     b. add a cronjob for root `crontab -e`
        ```
