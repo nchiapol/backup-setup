@@ -66,3 +66,9 @@ Borg Cheat-Sheet
       ```
       borg prune --progress -d 10 -w 52 <repo-path>
       ```
+
+  - free disk space (`prune` alone is not enough)
+    ```
+    borg compact <repo-path>
+    ```
+
