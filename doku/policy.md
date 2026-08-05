@@ -3,8 +3,9 @@ Policy
   * external disk is connected by usb but not mounted
   * main backups are run daily
     (/root/backup/scripts/backup_home.sh)
-    - run as root user, from cron-job at 21:00
-    - only if a backup-disk is availabel
+    - run as root user
+      - originally: from cron-job at 21:00 (if a backup-disk is available)
+      - since 2025: when backup-disk is plugged in
     - backing up /home/nchiapol
   * backup disk is exchanged once every month
     - before doing so additional backups are run from a script with user
