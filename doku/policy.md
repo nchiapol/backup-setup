@@ -7,7 +7,7 @@ Policy
       - originally: from cron-job at 21:00 (if a backup-disk is available)
       - since 2025: when backup-disk is plugged in
     - backing up /home/nchiapol
-  * backup disk is exchanged once every month
+  * backup disk is exchanged once every month, unused disk is stored off-site
     - before doing so additional backups are run from a script with user
       interaction (/root/backup/scripts/backup_disk-switch.sh):
       - Backup: /etc, /root and further slow changing directories
