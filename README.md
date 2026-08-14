@@ -5,7 +5,7 @@ Backup Setup
 
 Preparation
 -----------
-  * buy two large external USB harddrives
+  * buy/organise two large external USB hard drives (ideally with different year of production and manufacturer - to reduce the risk of simultaneous hardware failure)
   * format each drive (I use `ext4`)
   * set label to `backupN`, where N is the number of the disk.
     e.g.:
@@ -17,7 +17,7 @@ Initial Setup (as root)
 -----------------------
 (The scripts are tested with Debian "Buster" and borg 1.1.4)
   * checkout this repo to `/root/backup`
-  * Adjust all paths (replace all occurences of `nchiapol`)
+  * Adjust all paths (replace all occurrences of `nchiapol`)
   * store the passphrase you want to use for your encryption-keys in the file `/root/backup/borg-passphrase`
     (Make sure its only readable by root `chmod 400 /root/backup/borg-passphrase`)
   * plug-in backup disk and run `setup.sh`
